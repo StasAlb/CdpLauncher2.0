@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <!-- Condition Type: Equal, NotEqual, Contain, NotContain, StartsWith, EndsWith -->
+  <Product Name="Visa 1" Description="visa 1">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="9231"/>
+    </Conditions>
+    <InFile></InFile>
+    <OutFile>..\Out\Classic.txt</OutFile>
+    <CDPIni>..\Classic_Launcher.ini</CDPIni>
+    <AdditionalProcessing>
+      <AddOn Type="Insert" SearchString="#" Count="6" Value="[script=1234.scr]"></AddOn>
+    </AdditionalProcessing>
+  </Product>
+  <Product Name="Visa 2" Description="visa 2">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="1712"/>
+    </Conditions>
+    <AdditionalProcessing>
+      <AddOn Type="Insert" SearchString="#" Count="6" Value="[script=1234.scr]"></AddOn>
+    </AdditionalProcessing>
+  </Product>
+  <Product Name="Visa 3" Description="visa 3">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="9001"/>
+      <Condition Field="AppNum" Type="Equal" Value="3"/>
+    </Conditions>
+    <AdditionalProcessing>
+      <AddOn Type="Insert" SearchString="#" Count="6" Value="[script=1234.scr]"></AddOn>
+    </AdditionalProcessing>
+  </Product>
+  <Product Name="Visa 4" Description="visa 4">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="9001"/>
+      <Condition Field="AppNum" Type="Equal" Value=""/>
+    </Conditions>
+  </Product>
+  <Product Name="Visa 5" Description="visa 5">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="9238"/>
+    </Conditions>
+    <OutFileFormat Format="Text"></OutFileFormat>
+  </Product>
+  <Product Name="3App" Description="" AppNum="3">
+    <Conditions>
+      <Condition Field="AppNum" Type="Equal" Value="3"></Condition>
+      <Condition Field="Pan" Type="StartsWith" Value="5228 81"></Condition>
+    </Conditions>
+    <Conditions>
+      <Condition Field="AppNum" Type="Equal" Value="3"></Condition>
+      <Condition Field="Pan" Type="StartsWith" Value="5223 99"></Condition>
+    </Conditions>
+    <Conditions>
+      <Condition Field="AppNum" Type="Equal" Value="3"></Condition>
+      <Condition Field="Pan" Type="StartsWith" Value="5258 62"></Condition>
+    </Conditions>
+    <InFile>..\3app.txt</InFile>
+    <OutFile>..\Out\3app.txt</OutFile>
+    <CDPIni>..\3Apl(my_path).ini </CDPIni>
+    <OutFileFormat Format="Text"></OutFileFormat>
+  </Product>
+  <Product Name="Armenian_VISA_Classic" Cdp="none">
+    <Conditions>
+      <Condition Field="File" Type="Contain" Value="VISACL"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <Conditions>
+      <Condition Field="Pan" Type="StartsWith" Value="4355 05"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <InFile>..\Input\data.txt</InFile>
+    <CDPIni>..\Ini\visa.ini</CDPIni>
+  </Product>
+  <Product Name="Armenian_Master_Card" Cdp="none">
+    <Conditions>
+      <Condition Field="File" Type="Contain" Value="MASTER"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <Conditions>
+      <Condition Field="Pan" Type="StartsWith" Value="5242 05"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <InFile>..\Input\data.txt</InFile>
+    <CDPIni>..\Ini\visa.ini</CDPIni>
+  </Product>
+  <Product Name="Armenian_MIR" Cdp="none">
+    <Conditions>
+      <Condition Field="File" Type="Contain" Value="MIR"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <Conditions>
+      <Condition Field="Pan" Type="StartsWith" Value="8436 05"></Condition>
+      <Condition Field="StrType" Type="Equal" Value="DCC"></Condition>
+    </Conditions>
+    <InFile>..\Input\data.txt</InFile>
+    <CDPIni>..\Ini\visa.ini</CDPIni>
+  </Product>
+  <Product Name="Armenian_TechnicalStr" Ignore="true">
+    <Conditions>
+      <Condition Field="StrType" Type="Equal" Value="DCL"></Condition>
+    </Conditions>
+  </Product>
+  <Product Name="Avangard" Description="">
+    <Conditions>
+      <Condition Field="ProductCode" Type="Equal" Value="K7"/>
+    </Conditions>
+    <InFile>..\Input\Avangard.txt</InFile>
+    <CDPIni>..\Ini\Avangard.ini</CDPIni>
+    <AdditionalProcessing>
+      <AddOn Type="ReformName" Delimitor="#" Count="1"/>
+      <AddOnPin Type="ReformName" Delimitor="#" Count="1"/>
+      <AddOnProc Type="ReformName" StartPos="20" Length="16"/>
+      <AddOnPin1 Type="RemoveRecord" StartPos="86" Length="1" Value="0"/>
+      <AddOn1 Type="Insert" SearchString="#" Count="7" Value="[script=nspk.scr]"></AddOn1>
+    </AdditionalProcessing>
+  </Product>
+</Products>

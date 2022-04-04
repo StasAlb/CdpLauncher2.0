@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <InputFormats>
+    <InputFormat Type="Text" Name="Standard">
+      <!-- Type: ArrayItem (Separator, Index), FixedLength (Start, Length) -->
+      <!-- Index, Start - по базе 0 -->
+      <!-- AddOn: Substring (Start, Length) -->
+      <InputField Name="ProductCode">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>18</Index>
+      </InputField>
+      <InputField Name="Bin">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator> 
+        <Index>0</Index>
+        <AddOn Function="Substring" Start="0" Length="6"></AddOn>
+      </InputField>
+      <InputField Name="AppNum">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>16</Index>
+      </InputField>
+      <InputField Name="CardholderName">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>3</Index>
+      </InputField>
+      <InputField Name="Pan">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>0</Index>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Text" Name="For3App">
+      <InputField Name="Pan">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>1</Index>
+      </InputField>
+      <InputField Name="AppNum">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>8</Index>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Xml" Name="OwRequest">
+      <Namespace Prefix="smsg">http://namespaces.globalplatform.org/systems-messaging/1.0.0</Namespace>
+      <RecordNode>PMJobs/smsg:GPMessage/smsg:GPBody/smsg:ApplicationDataNotification</RecordNode>
+      <InputField Name="Pan">
+        <Type>Attribute</Type>
+      </InputField>
+    </InputFormat>
+    <InputFormat Name="Armenian_Filename" Type="Text">
+      <InputField Name="File">
+        <Type>FileName</Type>
+      </InputField>
+      <InputField Name="StrType">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>1</Index>
+      </InputField>
+    </InputFormat>
+    <InputFormat Name="Armenian_Bin" Type="Text">
+      <InputField Name="Pan">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>4</Index>
+      </InputField>
+      <InputField Name="StrType">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>1</Index>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Text" Name="Avangard" Encoding="866">
+      <InputField Name="ProductCode">
+        <Type>FixedLength</Type>
+        <Start>272</Start>
+        <Length>2</Length>
+      </InputField>
+      <InputField Name="Pan" AdvanceUse="id">
+        <Type>FixedLength</Type>
+        <Start>0</Start>
+        <Length>16</Length>
+      </InputField>
+      <InputField Name="DesignCode">
+        <Type>FixedLength</Type>
+        <Start>1</Start>
+        <Length>2</Length>
+      </InputField>
+      <InputField Name="WholeString" AdvanceUse="yes">
+        <Type>FixedLength</Type>
+        <Start>0</Start>
+        <Length>500</Length>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Text" Name="FileTest" Encoding="866">
+      <InputField Name="ProductCode">
+        <Type>FileName</Type>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Text" Name="StreamTest">
+      <InputField Name="ProductCode">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>0</Index>
+      </InputField>
+      <InputField Name="Pan">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>1</Index>
+      </InputField>
+    </InputFormat>
+    <InputFormat Type="Text" Name="Vtb">
+      <InputField Name="Bank">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>0</Index>
+      </InputField>
+      <InputField Name="ProductCode">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>1</Index>
+      </InputField>
+      <InputField Name="Pan" AdvanceUse="id">
+        <Type>ArrayItem</Type>
+        <Separator>#</Separator>
+        <Index>2</Index>
+      </InputField>
+    </InputFormat>
+
+  </InputFormats>
+  <OutFileNames>
+    <!-- Type: Const, DateTime (Format), ProductName, CDPOutName, OriginalName, OriginalExtention -->
+    <!-- Function: Substring (Start, Length) -->
+    <OutFileName Name="OutName1">
+      <Directory>
+        <Item Type="Const" Value="Sub_"/>
+        <Item Type="InputField" Value="ProductCode"></Item>
+      </Directory>
+      <Item Type="InputField" Value="ProductCode"></Item>
+      <Item Type="Const" Value="_"/>
+      <Item Type="InputField" Value="DesignCode"></Item>
+      <Item Type="Const" Value=".txt"></Item>
+    </OutFileName>
+    <OutFileName Name="PinFiles">
+      <Directory>
+        <Item Type="ProductName" Function="ArrayItem" Separator="g" Index="0"/>
+      </Directory>
+      <Item Type="Const" Value="file"></Item>
+<!--      <Item Type="InputField" Value="DesignCode"></Item> -->
+      <Item Type="Const" Value="_pin.txt"></Item>
+    </OutFileName>
+    <OutFileName Name="ProcName">
+      <Item Type="ProductName"></Item>
+      <Item Type="InputField" Value="DesignCode"></Item>
+      <Item Type="Const" Value="_proc.txt"></Item>
+    </OutFileName>
+
+    <OutFileName Name="Armenian_Original">
+      <Item Type="OriginalName"/>
+      <Item Type="Const" Value="."/>
+      <Item Type="OriginalExtention"/>
+    </OutFileName>
+
+  </OutFileNames>
+  <Inputs>
+    <Input Name="In1" PostAction="Move">
+      <Directory>..\In</Directory>
+      <Mask>*.*</Mask>
+      <InputFormat>Avangard</InputFormat>
+      <OutDirectory>..\Out</OutDirectory>
+      <OutPinDirectory>..\Out\Pin</OutPinDirectory>
+      <OutFileNameFormat>OutName1</OutFileNameFormat>
+      <PinFileNameFormat>PinFiles</PinFileNameFormat>
+      <ProcFileNameFormat>ProcName</ProcFileNameFormat>
+    </Input>
+    <Input Name="In2">
+      <Directory>..\In</Directory>
+      <Mask>*.dat</Mask>
+      <InputFormat>For3App</InputFormat>
+      <OutDirectory>..\Out</OutDirectory>
+      <OutPinDirectory>..\Pin</OutPinDirectory>
+      <OutProcDirecotry>..\Proc</OutProcDirecotry>
+      <OutFileNameFormat>OutName1</OutFileNameFormat>
+    </Input>
+    <Input Name="OwData">
+      <Directory>..\In</Directory>
+      <Mask>PM_REQ*.xml</Mask>
+      <InputFormat>OwRequest</InputFormat>
+      <OutDirectory>..\Out</OutDirectory>
+      <OutFileNameFormat>OutName1</OutFileNameFormat>
+    </Input>
+  </Inputs>
+  <CDP DeleteResult="false">
+    <Directory>c:\Ostcard\CDP\</Directory>
+    <Console>..\cdp_cn.exe</Console>
+    <ErrorFile>..\err.txt</ErrorFile>
+    <InFile>..\In\file.txt</InFile>
+    <OutFile>..\Out\Classic</OutFile>
+    <OutFileFormat Format="Text" Encoding="1252"/>
+    <CDPIni>..\Dummy.ini</CDPIni>
+  </CDP>
+  <Language>russian</Language>
+</Settings>

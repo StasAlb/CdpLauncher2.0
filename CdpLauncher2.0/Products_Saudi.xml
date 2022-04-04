@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <!-- Condition Type: Equal, NotEqual, Contain, NotContain, StartsWith, EndsWith -->
+  <Product Name="374311" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="374311"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="11"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_374311.ini</CDPIni>
+  </Product>
+  
+  <Product Name="374312" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="374312"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="12"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_374312.ini</CDPIni>
+  </Product>
+  
+  <Product Name="376655" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="376655"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="13"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_376655.ini</CDPIni>
+  </Product>
+  
+  <Product Name="376656" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="376656"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="14"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_376656.ini</CDPIni>
+  </Product>
+  
+  <Product Name="377314" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="377314"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="16"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_377314.ini</CDPIni>
+  </Product>
+  
+  <Product Name="377347" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="377347"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="17"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Prod\AMEX_Dual_377347.ini</CDPIni>
+  </Product>
+  
+  <Product Name="374311_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="374311"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="21"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_374311_test.ini</CDPIni>
+  </Product>  
+  
+  <Product Name="374312_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="374312"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="22"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_374312_test.ini</CDPIni>
+  </Product>   
+  
+  <Product Name="376655_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="376655"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="23"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_376655_test.ini</CDPIni>
+  </Product>   
+  
+  <Product Name="376656_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="376656"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="24"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_376656_test.ini</CDPIni>
+  </Product>  
+
+  <Product Name="377314_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="377314"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="85"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_377314_test.ini</CDPIni>
+  </Product>    
+  
+  <Product Name="377347_test" Description="">
+    <Conditions>
+      <Condition Field="Bin" Type="Equal" Value="377347"/>
+	  <Condition Field="SecureProfile" Type="Equal" Value="83"/>
+    </Conditions>    
+	<CDPIni>..\Ini\Test\AMEX_Dual_377347_test.ini</CDPIni>
+  </Product>    
+
+<!-- service strings  -->
+  <Product Name="not data strings" Description="" Ignore="true">
+    <Conditions>
+      <Condition Field="WholeString" Type="NotContain" Value="#CHIPDATA#"/>
+    </Conditions>    
+  </Product>    
+
+ </Products>

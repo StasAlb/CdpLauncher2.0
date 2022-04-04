@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="File">File</system:String>
+    <system:String x:Key="Product">Product</system:String>
+    <system:String x:Key="Files">Files</system:String>
+    <system:String x:Key="Records">Records</system:String>
+    <system:String x:Key="Count">Count</system:String>
+    <system:String x:Key="Completed">Completed</system:String>
+    <system:String x:Key="Refresh">Refresh</system:String>
+    <system:String x:Key="Run">Run...</system:String>
+    <system:String x:Key="Delete">Delete jobs</system:String>
+    <system:String x:Key="NotDefined">Not defined</system:String>
+    <system:String x:Key="UnknownCondition">Unknown condition</system:String>
+    <system:String x:Key="Config">Config loading...</system:String>
+    <system:String x:Key="ConfigFile">Settings file</system:String>
+    <system:String x:Key="ConfigError">Settings file load error:</system:String>
+    <system:String x:Key="Loaded">loaded</system:String>
+    <system:String x:Key="Products">Products loading...</system:String>
+    <system:String x:Key="ProductFile">Product file</system:String>
+    <system:String x:Key="ProductError">Product file load error:</system:String>
+    <system:String x:Key="ProductsLow">products</system:String>
+    <system:String x:Key="InputScan">Input folder scan</system:String>
+    <system:String x:Key="InputNameError">Input section not found</system:String>
+    <system:String x:Key="InputFolderError">Input folder error</system:String>
+    <system:String x:Key="InputFolder">Input folder</system:String>
+    <system:String x:Key="InputMask">Mask</system:String>
+    <system:String x:Key="ErrorSection">Error. File {0}. Input section {1} not found</system:String>
+    <system:String x:Key="Start">Run...</system:String>
+    <system:String x:Key="Error">Error</system:String>
+    <system:String x:Key="ProductNameError">Prodcut section not found</system:String>
+    <system:String x:Key="ProductInFileError">Parameter InFile not found</system:String>
+    <system:String x:Key="ProductCdpIniError">Parameter CdpIni not found</system:String>
+    <system:String x:Key="CdpEmbossFileError">Output emboss-file not found</system:String>
+    <system:String x:Key="CdpPinFileError">Output pin-file not found</system:String>
+    <system:String x:Key="CdpProcFileError">Output proc-file not found</system:String>
+</ResourceDictionary>

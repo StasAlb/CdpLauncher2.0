@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="CdpLauncher2.TreeViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CdpLauncher2"
+             xmlns:tree="clr-namespace:MyWpfControls.Tree;assembly=WpfControls"
+             >
+    <UserControl.Resources>
+        <local:RegImageConverter x:Key="RegImageConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <tree:TreeList Name="tlFiles">
+            <tree:TreeList.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="200" Header="{DynamicResource File}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <tree:RowExpander/>
+                                        <Image Source="{Binding Converter={StaticResource RegImageConverter}}"  Margin="0, 0, 5, 0"/>
+                                        <TextBlock Text="{Binding Title}" Foreground="{Binding ItemColor}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Product}" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProductName}" Foreground="{Binding ItemColor}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Count}" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Count}" Foreground="{Binding ItemColor}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Completed}" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CountMade}" Foreground="{Binding ItemColor}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </tree:TreeList.View>
+        </tree:TreeList>
+    </Grid>
+</UserControl>

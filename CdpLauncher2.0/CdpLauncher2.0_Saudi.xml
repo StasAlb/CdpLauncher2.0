@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings> 
+  <Schedule1 Timeout="10"></Schedule1>
+  <Language>English</Language>
+  <InputFormats>
+    <InputFormat Type="Text" Name="StandardFormat">
+      <!-- Type: ArrayItem (Separator, Index), FixedLength (Start, Length) -->
+      <!-- Index, Start - по базе 0 -->
+      <!-- AddOn: Substring (Start, Length) -->
+      <InputField Name="SecureProfile">
+        <Type>FixedLength</Type>
+        <Start>527</Start>
+        <Length>2</Length>
+      </InputField>
+      <InputField Name="Bin">
+        <Type>FixedLength</Type>
+        <Start>6</Start>
+        <Length>6</Length>
+      </InputField>
+      <InputField Name="WholeString">
+        <Type>FixedLength</Type>
+        <Start>0</Start>
+      </InputField>
+    </InputFormat> 
+  </InputFormats>
+  <OutFileNames>
+    <!-- Type: Const, DateTime (Format), ProductName, CDPOutName, OriginalName, OriginalExtention -->
+    <!-- Function: Substring (Start, Length) -->
+    <OutFileName Name="OutName">
+      <Item Type="OriginalName"/>
+	  <Item Type="Const" Value=".OST"/>
+    </OutFileName>
+  </OutFileNames>
+  <Inputs>
+    <Input Name="InMain" PostAction="Move" Encoding="1252">
+      <Directory>c:\INPUT_AESA</Directory>
+      <Mask>*.indata</Mask>
+      <ArchiveDirectory>c:\INPUT_AESA\Archive</ArchiveDirectory>
+      <InputFormat>StandardFormat</InputFormat>
+      <OutDirectory>c:\OUTPUT_AESA</OutDirectory>
+      <OutFileNameFormat>OutName</OutFileNameFormat>
+    </Input>
+  </Inputs>
+  <CDP DeleteResult="false">
+    <Directory>c:\ostcard\CDP\</Directory>
+    <Console>..\CDP_Console.exe</Console>
+    <ErrorFile>..\err.txt</ErrorFile>
+    <InFile>..\Input\data.txt</InFile>
+    <OutFileFormat Format="Text" Encoding="1252"/>
+  </CDP>
+</Settings>
