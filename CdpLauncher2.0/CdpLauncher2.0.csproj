@@ -132,7 +132,6 @@
   <ItemGroup>
     <None Include="CdpLauncher2.0.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

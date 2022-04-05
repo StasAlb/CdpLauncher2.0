@@ -63,6 +63,29 @@ namespace CdpLauncher2
                 Directory.CreateDirectory(System.IO.Path.Combine(startDirectory, "Pending"));
             iniName = String.Format(@"{0}Pending\pending.ini", startDirectory);
             LoadXmls();
+            int cnt = XmlClass.GetXmlNodeCount(xmlSettings, "ExternalApp/App", xnmSettings);
+            for (int i=0;i<cnt;i++)
+            {
+                XmlDocument xn = XmlClass.GetXmlNode(xmlSettings, "ExternalApp/App", i, xnmSettings);
+                string tp = XmlClass.GetAttribute(xn, "", "RunAt", xnmSettings);
+                if (tp == "Start")
+                {
+                    string path = XmlClass.GetAttribute(xn, "", "Path", xnmSettings);
+                    AddToLog1($"Execute {path}");
+                    try
+                    {
+                        using (Process p = Process.Start(path))
+                        {
+                            p.WaitForExit();
+                        }
+                        AddToLog1("Execute complete");
+                    }
+                    catch(Exception ex)
+                    {
+                        AddToLog1($"Execute error: {ex.Message}");
+                    }
+                }
+            }
             try
             {
                 scheduleTime = Convert.ToInt32(XmlClass.GetAttribute(xmlSettings, "Schedule", "Timeout", "0", xnmSettings));
@@ -477,6 +500,30 @@ namespace CdpLauncher2
             backgroundWorker.DoWork += delegate (object o, DoWorkEventArgs args)
             {
                 AddToLog1((string)this.FindResource("Start"));
+                int cntA = XmlClass.GetXmlNodeCount(xmlSettings, "ExternalApp/App", xnmSettings);
+                for (int i = 0; i < cntA; i++)
+                {
+                    XmlDocument xn = XmlClass.GetXmlNode(xmlSettings, "ExternalApp/App", i, xnmSettings);
+                    string tp = XmlClass.GetAttribute(xn, "", "RunAt", xnmSettings);
+                    if (tp == "RunButton")
+                    {
+                        string path = XmlClass.GetAttribute(xn, "", "Path", xnmSettings);
+                        AddToLog1($"Execute {path}");
+                        try
+                        {
+                            using (Process p = Process.Start(path))
+                            {
+                                p.WaitForExit();
+                            }
+                            AddToLog1("Execute complete");
+                        }
+                        catch (Exception ex)
+                        {
+                            AddToLog1($"Execute error: {ex.Message}");
+                        }
+                    }
+                }
+
                 //сперва проходим по файлам, если выбран
                 foreach (MyWpfControls.Tree.TreeNode tn in tvcTree.Nodes)
                 {
@@ -625,7 +672,30 @@ namespace CdpLauncher2
         private int RunCdp(TreeData product)
         {
             if (product.CountWait == 0)
-                return 0; 
+                return 0;
+            int cntA = XmlClass.GetXmlNodeCount(xmlSettings, "ExternalApp/App", xnmSettings);
+            for (int i = 0; i < cntA; i++)
+            {
+                XmlDocument xn = XmlClass.GetXmlNode(xmlSettings, "ExternalApp/App", i, xnmSettings);
+                string tp = XmlClass.GetAttribute(xn, "", "RunAt", xnmSettings);
+                if (tp == "RunProduct")
+                {
+                    string path = XmlClass.GetAttribute(xn, "", "Path", xnmSettings);
+                    AddToLog1($"Execute {path}");
+                    try
+                    {
+                        using (Process p = Process.Start(path))
+                        {
+                            p.WaitForExit();
+                        }
+                        AddToLog1("Execute complete");
+                    }
+                    catch (Exception ex)
+                    {
+                        AddToLog1($"Execute error: {ex.Message}");
+                    }
+                }
+            }
             //получение pending файла с данными
             /*StringBuilder sb = new StringBuilder();
             string sectionName = String.Format("{0}.{1}", file.InFormat, file.FileName);

@@ -202,5 +202,8 @@
     <OutFileFormat Format="Text" Encoding="1252"/>
     <CDPIni>..\Dummy.ini</CDPIni>
   </CDP>
+  <ExternalApp>
+    <App Path="" RunAt="Start"/>
+  </ExternalApp>
   <Language>russian</Language>
 </Settings>
